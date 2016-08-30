@@ -14,7 +14,8 @@
   ValidPopin.prototype = {
     _init: function() {
 
-      Array.prototype.forEach.call(document.querySelectorAll('.delete'), function(btn) {
+      Array.prototype.forEach.call(document.querySelectorAll('a.delete'), function(btn) {
+        console.log('ici');
         btn.addEventListener('click', function(e) {
           e.preventDefault();
           e.stopPropagation();
