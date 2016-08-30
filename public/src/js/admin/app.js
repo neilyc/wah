@@ -29,10 +29,11 @@
           path = decodeURIComponent(window.location.pathname),
           href;
 
-      Array.prototype.forEach.call(document.querySelectorAll('.topnav li a'), function (elem) {
+      Array.prototype.forEach.call(document.querySelectorAll('.sidenav a'), function (elem) {
+        console.log(elem);
         href = elem.getAttribute('href');
         if (path.substring(0, href.length) === href && href != '/') {
-          elem.classList.add('current');
+          elem.classList.add('active');
         }
       });
     }

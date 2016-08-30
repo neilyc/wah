@@ -25,10 +25,10 @@ $app->group('/admin', function () {
   $this->get('', 'App\Controller\Admin\IndexController:indexAction')->setName('admin_index');
 
   $this->group('/photos', function () {
-    $this->get('/list', 'App\Controller\Admin\PhotoController:listAction')->setName('admin_photo_list');
+    $this->get('', 'App\Controller\Admin\PhotoController:listAction')->setName('admin_photo_list');
     $this->get('/create', 'App\Controller\Admin\PhotoController:createAction')->setName('admin_photo_create');
     $this->get('/edit/{id}', 'App\Controller\Admin\PhotoController:editAction')->setName('admin_photo_edit');
-    $this->get('/save', 'App\Controller\Admin\PhotoController:saveAction')->setName('admin_photo_save');
+    $this->post('/save', 'App\Controller\Admin\PhotoController:saveAction')->setName('admin_photo_save');
     $this->get('/delete/{id}', 'App\Controller\Admin\PhotoController:deleteAction')->setName('admin_photo_delete');
   });
 });

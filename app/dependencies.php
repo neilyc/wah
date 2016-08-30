@@ -52,15 +52,6 @@ $container['logger'] = function ($c) {
   return $logger;
 };
 
-// Doctrine
-$container['em'] = function ($c) {
-
-};
-
-$container['flash'] = function () {
-    return new \Slim\Flash\Messages();
-};
-
 // -----------------------------------------------------------------------------
 // Controller factories
 // -----------------------------------------------------------------------------
@@ -70,7 +61,7 @@ $container['App\Controller\IndexController'] = function ($c) {
 };
 
 $container['App\Controller\PhotoController'] = function ($c) {
-  $photoResource = new \App\Resource\PhotoResource($c->get('em'));
+  $photoResource = new \App\Resource\PhotoResource();
   return new App\Controller\PhotoController($c->get('view'), $c->get('logger'), $photoResource);
 };
 
@@ -81,11 +72,10 @@ $container['App\Controller\Admin\IndexController'] = function ($c) {
 };
 
 $container['App\Controller\Admin\LoginController'] = function ($c) {
-  $userResource = new \App\Resource\UserResource($c->get('em'));
+  $userResource = new \App\Resource\UserResource();
   return new App\Controller\Admin\LoginController($c->get('view'), $c->get('logger'), $c->get('router'), $userResource, $c->get('flash'));
 };
 
 $container['App\Controller\Admin\PhotoController'] = function ($c) {
-  $photoResource = new \App\Resource\PhotoResource($c->get('em'));
   return new App\Controller\Admin\PhotoController($c->get('view'), $c->get('logger'), $c->get('router'), $c->get('flash'));
 };

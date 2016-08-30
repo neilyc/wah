@@ -14,6 +14,7 @@ class AdminController
   protected $router;
   protected $flash;
   protected $session;
+  protected $context = array();
 
   public function __construct(Twig $view, LoggerInterface $logger, Router $router, Messages $flash)
   {
@@ -29,5 +30,9 @@ class AdminController
     $this->view = $view;
     $this->logger = $logger;
     $this->flash = $flash;
+
+    if(count($this->flash->getMessages()) > 0) {
+      $this->context += array('messages' => $this->flash->getMessages());
+    }
   }
 }

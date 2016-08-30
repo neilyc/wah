@@ -19,28 +19,29 @@ class PhotoController extends AdminController
 
   public function listAction($request, $response)
   {
-    $this->logger->info('Home page action dispatched');
+    $this->logger->info('Admin photo list action [start]');
 
-    $context = array(
+    $this->context += array(
       'photos'  => $this->getPhotoResource()->get(),
-      'messages' => $this->flash->getMessages(),
     );
 
-    $this->view->render($response, 'admin/photo/list.html.twig', $context);
+    $this->view->render($response, 'admin/photo/list.html.twig', $this->context);
+    $this->logger->info('Admin photo list action [end]');
     return $response;
   }
 
   public function createAction($request, $response)
   {
-    $this->logger->info('Home page action dispatched');
+    $this->logger->info('Admin photo create action [start]');
 
-    $this->view->render($response, 'admin/photo/create.html.twig');
+    $this->view->render($response, 'admin/photo/form.html.twig', $this->context);
+    $this->logger->info('Admin photo create action [end]');
     return $response;    
   }
 
   public function editAction($request, $response, $args)
   {
-    $this->logger->info('Home page action dispatched');
+    $this->logger->info('Admin photo edit action [start]');
 
     $photo = $this->getPhotoResource()->get($args['id']);
 
@@ -48,30 +49,35 @@ class PhotoController extends AdminController
       return $response->withStatus(302)->withHeader('Location', $this->router->pathFor('admin_photo_list'));
     }
 
-    $context = array(
+    $this->context += array(
       'photo'   => $photo,
-      'messages' => $this->flash->getMessages(),
     );
 
-    $this->view->render($response, 'admin/photo/edit.html.twig', $context);
+    $this->view->render($response, 'admin/photo/form.html.twig', $this->context);
+    $this->logger->info('Admin photo edit action [end]');
     return $response;    
   }
 
   public function saveAction($request, $response)
   {
-    if(isset($_REQUEST['id'])) {
+    $this->logger->info('Admin photo save action [start]');
+
+    if(isset($_REQUEST['id']) && $_REQUEST['id'] != '') {
       $photo = $this->getPhotoResource()->get($_REQUEST['id']);
     } else {
       $photo = new Photo();
     }
 
     $photo->setTitle($_REQUEST['title']);
-    $photo->setImage($_REQUEST['image']);
+
+    if(isset($_FILES['image'])) {
+      $photo->uploadImage($_FILES['image']);
+    }
 
     $id = $this->getPhotoResource()->persist($photo);
-
-    $this->flash->addMessage('success', 'La photo a bien été enregistrée.');
-
+    
+    $this->flash->addMessage('save-photo', 'La photo a bien été enregistrée.');
+    $this->logger->info('Admin photo save action [end]');
     return $response->withStatus(302)->withHeader(
       'Location', 
       $this->router->pathFor('admin_photo_edit', array('id' => $id))
@@ -80,15 +86,16 @@ class PhotoController extends AdminController
 
   public function deleteAction($request, $response, $args)
   {
-    $this->logger->info('Home page action dispatched');
+    $this->logger->info('Admin photo delete action [start]');
 
     $photo = $this->getPhotoResource()->get($args['id']);
 
     if($photo) {
       $this->getPhotoResource()->remove($photo);
-      $this->flash->addMessage('success', 'La photo a bien été supprimée.');
+      $this->flash->addMessage('delete-photo', 'La photo a bien été supprimée.');
     }
 
+    $this->logger->info('Admin photo delete action [end]');
     return $response->withStatus(302)->withHeader('Location', $this->router->pathFor('admin_photo_list'));
   }
 }

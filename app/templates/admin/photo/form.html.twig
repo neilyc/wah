@@ -1,0 +1,18 @@
+{% extends "admin/base.html.twig" %}
+
+{% block container %}
+  <div class="photos">
+    <div class="photo form">
+      <form action="{{ path_for('admin_photo_save') }}" method="post" enctype="multipart/form-data">
+        <input type="hidden" value="{{ photo.id }}" name="id">
+        <input type="text" value="{{ photo.title }}" name="title">
+        {% if photo.image %}
+          <img src="/upload/photo/{{photo.image}}" />
+        {% endif %}
+        <!--input type="text" value="{{ photo.image }}" name="image"-->
+        <input type="file" name="image">
+        <button>Sauvegarder</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -67,6 +67,10 @@
       buttons.className = 'cd-buttons';
       self.close.className = 'cd-popup-close img-replace';
 
+      text.innerHTML = 'Voulez-vous valider cette action ?';
+      self.yes.innerHTML = 'Oui';
+      self.no.innerHTML = 'Non';
+
       container.appendChild(text);
       container.appendChild(buttons);
       container.appendChild(self.close);

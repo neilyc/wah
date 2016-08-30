@@ -2,6 +2,7 @@
 namespace App\Entity;
 
 use App\Entity;
+use App\Helper\Upload;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -75,5 +76,19 @@ class Photo
   public function setImage($image)
   {
     $this->image = $image;
+  }
+
+
+  public function uploadImage($img) {
+    $handle = new Upload($img);
+    if ($handle->uploaded) {
+      $handle->process('upload/photo/');
+      if ($handle->processed) {
+        $this->setImage($handle->file_dst_name);
+        $handle->clean();
+      } else {
+
+      }
+    }
   }
 }
