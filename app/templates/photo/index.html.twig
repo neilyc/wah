@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block container %}
+  <div class="photos">
+    {% if photos %}
+      {% for photo in photos %}
+        <div class="photo">
+          {{photo.title}}
+          {{photo.image}}
+        </div>
+      {% endfor %}
+    {% else %}
+
+    {% endif %}
+  </div>
+{% endblock %}

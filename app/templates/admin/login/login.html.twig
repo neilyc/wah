@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{% block description %}Hostel{% endblock %}">
+  <meta name="author" content="">
+  {% block meta %}{% endblock %}
+  <link rel="shortcut icon" href="/assets/ico/favicon.ico">
+
+  <title>{% block title %}{% endblock %}</title>
+  <link href="/assets/css/admin/styles.min.css" rel="stylesheet">
+  {% block styles %}{% endblock %}
+</head>
+
+<body>
+
+<div class="login-page">
+  <div class="form">
+    <form class="login-form" method="get" action="{{ path_for('login_check') }}">
+      <input type="text" name="username" placeholder="username"/>
+      <input type="password" name="password" placeholder="password"/>
+      <button>Se Connecter</button>
+    </form>
+    <div class="error">{{message}}</div>
+  </div>
+</div>
+
+
+<script src="/assets/js/admin/app.min.js"></script>
+<script type="text/javascript">
+  var app = new App();
+</script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

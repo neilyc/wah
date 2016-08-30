@@ -1,0 +1,21 @@
+{% extends "admin/base.html.twig" %}
+
+{% block container %}
+  <div class="photos">
+    <div class="photo list">
+      <a href="{{ path_for('admin_photo_create') }}">create</a>
+      {% if photos %}
+        {% for photo in photos %}
+          <div class="photo">
+            {{photo.title}}
+            {{photo.image}}
+            <a href="{{ path_for('admin_photo_edit',  { 'id': photo.id }) }}" class="edit">edit</a>
+            <a href="{{ path_for('admin_photo_delete',  { 'id': photo.id }) }}" class="delete">delete</a>
+          </div>
+        {% endfor %}
+      {% else %}
+
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{
+  "name": "neilyc/wah",
+  "description": "WAH, W4H - Website For Hostel",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Fabien Logarinho",
+      "email": "logarinho.fabien@gmail.com",
+      "homepage": "http://flogarinho.com/"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/src"
+    }
+  },
+  "require": {
+    "slim/slim": "^3.5",
+    "slim/flash": "^0.1.0",
+    "slim/twig-view": "^2.1",
+    "monolog/monolog": "^1.21",
+    "doctrine/orm": "^2.5"
+  }
+}

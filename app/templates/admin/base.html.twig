@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{% block description %}Hostel{% endblock %}">
+  <meta name="author" content="">
+  {% block meta %}{% endblock %}
+  <link rel="shortcut icon" href="/assets/ico/favicon.ico">
+
+  <title>{% block title %}{% endblock %}</title>
+  <link href="/assets/css/admin/styles.min.css" rel="stylesheet">
+  {% block styles %}{% endblock %}
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  {% include 'admin/shared/header.html.twig' %}
+  {% include 'admin/shared/sidebar.html.twig' %}
+  
+  <div class="container open">
+    {% block container %}{% endblock %}
+  </div>
+
+
+  {% if messages %}
+    {% for message in messages %}
+      {% for msg in message %}
+        <div class="alert alert-success">{{ msg }}</div>
+      {% endfor %}
+    {% endfor %}
+  {% endif %}  
+
+<script src="/assets/js/admin/app.min.js"></script>
+<script type="text/javascript">
+  var app = new App();
+</script>
+{% block scripts %}{% endblock %}
+</body>
+</html>
