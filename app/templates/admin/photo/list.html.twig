@@ -2,19 +2,33 @@
 
 {% block container %}
   <div class="photos">
-    <div class="photo list">
-      <a href="{{ path_for('admin_photo_create') }}">create</a>
+    <div class="photos-list">
+      <a href="{{ path_for('admin_photo_create') }}" class="btn btn-info">Ajouter</a>
       {% if photos %}
-        {% for photo in photos %}
-          <div class="photo">
-            {{photo.title}}
-            {{photo.image}}
-            <a href="{{ path_for('admin_photo_edit',  { 'id': photo.id }) }}" class="edit">edit</a>
-            <a href="{{ path_for('admin_photo_delete',  { 'id': photo.id }) }}" class="delete">delete</a>
-          </div>
-        {% endfor %}
+        <table>
+          <tr>
+            <th>Nom</th>
+            <th>Image</th>
+            <th>Actions</th>  
+          </tr>          
+          {% for photo in photos %}
+            <tr class="photo">
+              <td>{{photo.title}}</td>
+              <td>        
+                {% if photo.image %}
+                  <img src="/upload/photo/{{photo.image}}" />
+                {% endif %}
+              </td>
+              <td>
+                <a href="{{ path_for('admin_photo_edit',  { 'id': photo.id }) }}" class="btn btn-success edit">Modifier</a> <a href="{{ path_for('admin_photo_delete',  { 'id': photo.id }) }}" class="btn btn-danger delete">Supprimer</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </table>
       {% else %}
-
+        <div>
+          Il n'y a pas de photo pour l'instant, pourquoi ne pas en <a href="{{ path_for('admin_photo_create') }}">ajouter</a> une ?
+        </div>
       {% endif %}
     </div>
   </div>
