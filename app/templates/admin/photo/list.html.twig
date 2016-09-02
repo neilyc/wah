@@ -16,7 +16,7 @@
               <td>{{photo.title}}</td>
               <td>        
                 {% if photo.image %}
-                  <img src="/upload/photo/{{photo.image}}" />
+                  <img src="/upload/photo/{{ photo.image }}" />
                 {% endif %}
               </td>
               <td>
@@ -32,4 +32,6 @@
       {% endif %}
     </div>
   </div>
+
+  {% include 'admin/shared/popin-valid.html.twig' %}
 {% endblock %}

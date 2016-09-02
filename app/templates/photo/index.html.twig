@@ -1,16 +1,17 @@
 {% extends "base.html.twig" %}
 
 {% block container %}
-  <div class="photos">
+  <div class="photos clearfix">
     {% if photos %}
-      {% for photo in photos %}
-        <div class="photo">
-          {{photo.title}}
-          {{photo.image}}
-        </div>
-      {% endfor %}
-    {% else %}
-
+      <ul class="polaroids clearfix">
+        {% for photo in photos %}
+          <li class="img col-xs-12 col-sm-6 col-md-3">
+            <a target="_blank" href="img_forest.jpg" title="{{photo.title}}">
+              <img src="/upload/photo/{{photo.image}}" alt="Forest">
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
     {% endif %}
   </div>
 {% endblock %}

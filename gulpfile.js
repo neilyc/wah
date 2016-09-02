@@ -2,6 +2,7 @@ var gulp = require('gulp'),
 concat = require('gulp-concat'),
 less = require('gulp-less'),
 minifyCSS = require('gulp-minify-css'),
+babel = require('gulp-babel'),
 uglify = require('gulp-uglify');
 
 
@@ -32,6 +33,7 @@ gulp.task('js.front', function() {
     // app
     './public/src/js/app.js',
   ])
+  .pipe(babel())
   .pipe(concat('app.min.js'))
   //.pipe(uglify())
   .pipe(gulp.dest('./public/assets/js'));
@@ -45,6 +47,7 @@ gulp.task('js.admin', function() {
     './public/src/js/admin/validPopin.js'
   ])
   .pipe(concat('app.min.js'))
+  .pipe(babel())
   //.pipe(uglify())
   .pipe(gulp.dest('./public/assets/js/admin'));
 });
