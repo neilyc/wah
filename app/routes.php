@@ -16,6 +16,11 @@ $app->group('/', function () {
   $this->group('hebergements', function () {
     $this->get('', 'App\Controller\LodgingController:indexAction')->setName('lodging_index');
   });
+
+  $this->group('infos', function () {
+    $this->get('', 'App\Controller\InfosController:indexAction')->setName('infos_index');
+    $this->post('/contact', 'App\Controller\InfosController:contactAction')->setName('infos_contact');
+  });
 });
 /**
  * Photo 
