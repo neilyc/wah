@@ -12,7 +12,23 @@ class App {
 
     window.onload = () => {
       self._menuCheckActive();
-      document.body.removeChild(document.querySelector('.preloader'));
+      document.body.classList.add("loaded");
+    }
+    window.onscroll = (e) => {  
+      self._toggleTopNav();
+    } 
+  }
+
+  _toggleTopNav() {
+    var scrollTop = Math.abs(document.body.getBoundingClientRect().top),
+        header = document.querySelector('.header'),
+        headerHeight = header.clientHeight - document.querySelector('.topnav-container').clientHeight;
+        
+    if(scrollTop > headerHeight) {
+      header.classList.add('down');
+    }
+    if (scrollTop < header.clientHeight) {
+      header.classList.remove('down');
     }
   }
 

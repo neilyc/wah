@@ -6,7 +6,7 @@ babel = require('gulp-babel'),
 uglify = require('gulp-uglify');
 
 
-gulp.task('css.front', function() {
+gulp.task('css.front', () => {
   gulp.src([
     './public/src/less/styles.less',
   ])
@@ -16,7 +16,7 @@ gulp.task('css.front', function() {
   .pipe(gulp.dest('./public/assets/css'));
 });
 
-gulp.task('css.admin', function() {
+gulp.task('css.admin', () => {
   gulp.src([
     './public/src/less/admin/styles.less',
   ])
@@ -26,7 +26,7 @@ gulp.task('css.admin', function() {
   .pipe(gulp.dest('./public/assets/css/admin'));
 });
 
-gulp.task('js.front', function() {
+gulp.task('js.front', () => {
   gulp.src([
     // lib
 
@@ -38,7 +38,7 @@ gulp.task('js.front', function() {
   //.pipe(uglify())
   .pipe(gulp.dest('./public/assets/js'));
 });
-gulp.task('js.admin', function() {
+gulp.task('js.admin', () => {
   gulp.src([
     // lib
 
@@ -52,7 +52,7 @@ gulp.task('js.admin', function() {
   .pipe(gulp.dest('./public/assets/js/admin'));
 });
 
-gulp.task('watch', function () {
+gulp.task('watch', () => {
   gulp.watch([
     './public/src/less/**/*.less',
   ], ['css']);
