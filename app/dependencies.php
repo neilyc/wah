@@ -56,26 +56,34 @@ $container['logger'] = function ($c) {
 // Controller factories
 // -----------------------------------------------------------------------------
 
+
+/* FRONT */
 $container['App\Controller\IndexController'] = function ($c) {
-  return new App\Controller\IndexController($c->get('view'), $c->get('logger'));
+  return new App\Controller\IndexController($c->get('view'), $c->get('logger'), $c->get('router'), $c->get('flash'));
 };
 
 $container['App\Controller\PhotoController'] = function ($c) {
-  $photoResource = new \App\Resource\PhotoResource();
-  return new App\Controller\PhotoController($c->get('view'), $c->get('logger'), $photoResource);
+  return new App\Controller\PhotoController($c->get('view'), $c->get('logger'), $c->get('router'), $c->get('flash'));
 };
 
+$container['App\Controller\LodgingController'] = function ($c) {
+  return new App\Controller\LodgingController($c->get('view'), $c->get('logger'), $c->get('router'), $c->get('flash'));
+};
 
-
+/* ADMIN */
 $container['App\Controller\Admin\IndexController'] = function ($c) {
   return new App\Controller\Admin\IndexController($c->get('view'), $c->get('logger'), $c->get('router'), $c->get('flash'));
 };
 
 $container['App\Controller\Admin\LoginController'] = function ($c) {
   $userResource = new \App\Resource\UserResource();
-  return new App\Controller\Admin\LoginController($c->get('view'), $c->get('logger'), $c->get('router'), $userResource, $c->get('flash'));
+  return new App\Controller\Admin\LoginController($c->get('view'), $c->get('logger'), $c->get('router'), $c->get('flash'), $userResource);
 };
 
 $container['App\Controller\Admin\PhotoController'] = function ($c) {
   return new App\Controller\Admin\PhotoController($c->get('view'), $c->get('logger'), $c->get('router'), $c->get('flash'));
+};
+
+$container['App\Controller\Admin\LodgingController'] = function ($c) {
+  return new App\Controller\Admin\LodgingController($c->get('view'), $c->get('logger'), $c->get('router'), $c->get('flash'));
 };

@@ -1,21 +1,11 @@
 <?php
 namespace App\Controller;
 
-use Slim\Views\Twig;
-use Psr\Log\LoggerInterface;
+use App\Controller\Controller;
 
-final class IndexController
+class IndexController extends Controller
 {
-  private $view;
-  private $logger;
-
-  public function __construct(Twig $view, LoggerInterface $logger)
-  {
-    $this->view = $view;
-    $this->logger = $logger;
-  }
-
-  public function indexAction($request, $response, $args)
+  public function indexAction($request, $response)
   {
     $this->logger->info("Home page action dispatched");
 

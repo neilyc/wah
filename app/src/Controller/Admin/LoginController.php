@@ -21,8 +21,8 @@ final class LoginController
     Twig $view, 
     LoggerInterface $logger, 
     Router $router, 
-    UserResource $userResource,
-    Messages $flash
+    Messages $flash,
+    UserResource $userResource
   )
   {
     $this->view = $view;

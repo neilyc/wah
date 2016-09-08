@@ -31,9 +31,9 @@ return [
       'connection' => [
         'driver'   => 'pdo_mysql',
         'host'     => 'localhost',
-        'dbname'   => 'waah',
+        'dbname'   => 'wah',
         'user'     => 'root',
-        'password' => null,
+        'password' => 'root',
       ]
     ]
   ],

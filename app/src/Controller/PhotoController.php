@@ -1,29 +1,27 @@
 <?php
 namespace App\Controller;
 
-use Slim\Views\Twig;
-use Psr\Log\LoggerInterface;
+use App\Controller\Controller;
 use App\Resource\PhotoResource;
 
-final class PhotoController
+class PhotoController extends Controller
 {
-  private $photoResource;
-  private $view;
-  private $logger;
+  protected $photoResource = null;
 
-  public function __construct(Twig $view, LoggerInterface $logger, PhotoResource $photoResource)
-  {
-    $this->view = $view;
-    $this->logger = $logger;
-    $this->photoResource = $photoResource;
-  } 
+  public function getPhotoResource() {
+    if($this->photoResource == null) {
+      $this->photoResource = new PhotoResource();
+    }
 
-  public function indexAction($request, $response, $args)
+    return $this->photoResource;
+  }
+
+  public function indexAction($request, $response)
   {
     $this->logger->info("Home page action dispatched");
     
     $context = array(
-      'photos' => $this->photoResource->get(),
+      'photos' => $this->getPhotoResource()->get(),
     );
 
     $this->view->render($response, 'photo/index.html.twig', $context);
