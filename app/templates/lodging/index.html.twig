@@ -3,15 +3,19 @@
 {% block container %}
   <div class="lodgings clearfix">
     {% if lodgings %}
-      <ul class="polaroids clearfix">
         {% for lodging in lodgings %}
-          <li class="img col-xs-12 col-sm-6 col-md-3">
-            <a target="_blank" href="img_forest.jpg" title="{{lodging.title}}">
-              <img src="/upload/lodging/{{lodging.image}}" alt="Forest">
-            </a>
-          </li>
+          <div class="lodging">
+            <div class="img col-xs-12 col-md-4">
+              <a target="_blank" href="img_forest.jpg" title="{{lodging.title}}" >
+                <img src="/upload/lodging/{{lodging.image}}" alt="Forest">
+              </a>
+            </div>
+            <div class="desc col-xs-12 col-md-8">
+              <p>{{lodging.description | raw }}</p>
+              <p>Prix : {{lodging.price}}</p>
+            </div>
+          </div>
         {% endfor %}
-      </ul>
     {% endif %}
   </div>
 {% endblock %}

@@ -68,7 +68,8 @@ class LodgingController extends AdminController
       $lodging = new Lodging();
     }
 
-    $lodging->setTitle($_REQUEST['title']);
+    $lodging->setDescription($_REQUEST['description']);
+    $lodging->setPrice($_REQUEST['price']);
 
     if(isset($_FILES['image'])) {
       $lodging->uploadImage($_FILES['image']);

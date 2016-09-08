@@ -19,14 +19,21 @@ class Lodging
   protected $id;
 
   /**
-   * @ORM\Column(type="string", length=64)
+   * @ORM\Column(type="text")
    */
-  protected $title;
+  protected $description;
+
+  /**
+   * @ORM\Column(type="string", length=150)
+   */
+  protected $price;
 
   /**
    * @ORM\Column(type="string", length=150)
    */
   protected $image;
+
+
 
   /**
    * Get photo id
@@ -39,13 +46,23 @@ class Lodging
   }
 
   /**
-   * Get photo title
+   * Get photo description
    *
    * @ORM\return string
    */
-  public function getTitle()
+  public function getDescription()
   {
-      return $this->title;
+      return $this->description;
+  }
+
+  /**
+   * Get photo price
+   *
+   * @ORM\return string
+   */
+  public function getPrice()
+  {
+      return $this->price;
   }
 
   /**
@@ -59,13 +76,23 @@ class Lodging
   }
 
   /**
-   * set photo title
+   * set photo description
    *
-   * @ORM\param $title
+   * @ORM\param $description
    */
-  public function setTitle($title)
+  public function setDescription($description)
   {
-    $this->title = $title;
+    $this->description = $description;
+  }
+
+  /**
+   * set photo price
+   *
+   * @ORM\param $price
+   */
+  public function setPrice($price)
+  {
+    $this->price = $price;
   }
 
   /**
@@ -82,7 +109,7 @@ class Lodging
   public function uploadImage($img) {
     $handle = new Upload($img);
     if ($handle->uploaded) {
-      $handle->process('upload/photo/');
+      $handle->process('upload/lodging/');
       if ($handle->processed) {
         $this->setImage($handle->file_dst_name);
         $handle->clean();

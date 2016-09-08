@@ -14,6 +14,11 @@
       }
 
       window.onload = function() {
+        tinymce.init({ 
+          selector:'textarea',
+          language: 'fr_FR',
+          language_url: '/assets/js/admin/app.min.js' 
+        });
         self._menuCheckActive();
       }
     },

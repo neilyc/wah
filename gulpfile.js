@@ -12,7 +12,7 @@ gulp.task('css.front', () => {
   ])
   .pipe(concat('styles.min.css'))
   .pipe(less())
-  .pipe(minifyCSS())
+  //.pipe(minifyCSS())
   .pipe(gulp.dest('./public/assets/css'));
 });
 
@@ -41,7 +41,7 @@ gulp.task('js.front', () => {
 gulp.task('js.admin', () => {
   gulp.src([
     // lib
-
+    './public/src/js/lib/tinymce/lang/*',
     // app
     './public/src/js/admin/app.js',
     './public/src/js/admin/validPopin.js'
