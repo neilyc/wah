@@ -73,6 +73,8 @@ $container['App\Controller\LodgingController'] = function ($c) {
 $container['App\Controller\InfosController'] = function ($c) {
   return new App\Controller\InfosController($c->get('view'), $c->get('logger'), $c->get('router'), $c->get('flash'));
 };
+
+
 /* ADMIN */
 $container['App\Controller\Admin\IndexController'] = function ($c) {
   return new App\Controller\Admin\IndexController($c->get('view'), $c->get('logger'), $c->get('router'), $c->get('flash'));
@@ -89,4 +91,8 @@ $container['App\Controller\Admin\PhotoController'] = function ($c) {
 
 $container['App\Controller\Admin\LodgingController'] = function ($c) {
   return new App\Controller\Admin\LodgingController($c->get('view'), $c->get('logger'), $c->get('router'), $c->get('flash'));
+};
+
+$container['App\Controller\Admin\InfoController'] = function ($c) {
+  return new App\Controller\Admin\InfoController($c->get('view'), $c->get('logger'), $c->get('router'), $c->get('flash'));
 };

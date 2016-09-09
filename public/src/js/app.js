@@ -44,4 +44,18 @@ class App {
       }
     });
   }
+
+  initMap() {
+    var center = {lat: -18.911036, lng: 47.544599};
+
+    var map = new google.maps.Map(document.querySelector('.map-container'), {
+      center: center,
+      zoom: 16
+    });
+
+    new google.maps.Marker({
+      position: center,
+      map: map
+    });
+  }
 }

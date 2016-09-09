@@ -1,7 +1,10 @@
 <?php
 namespace App\Controller;
 
+
+
 use App\Controller\Controller;
+use App\Helper\Mailer;
 //use App\Resource\InfosResource;
 
 class InfosController extends Controller
@@ -30,6 +33,8 @@ class InfosController extends Controller
 
   public function contactAction($request, $response)
   {
+    $mail = new Mailer();
+    
     var_dump($_REQUEST);die;
     $this->logger->info("Home page action dispatched");
     
@@ -37,7 +42,6 @@ class InfosController extends Controller
       //'photos' => $this->getInfosResource()->get(),
     );
 
-    $this->view->render($response, 'infos/index.html.twig', $context);
-    return $response;
+    return $response->withStatus(302)->withHeader('Location', $this->router->pathFor('infos_index'));
   }
 }

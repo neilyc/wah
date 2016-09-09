@@ -31,10 +31,19 @@ return [
       'connection' => [
         'driver'   => 'pdo_mysql',
         'host'     => 'localhost',
-        'dbname'   => 'wah',
+        'dbname'   => 'waah',
         'user'     => 'root',
-        'password' => 'root',
+        'password' => '',
       ]
+    ],
+
+    'mailer' => [
+      'host'        => 'smtp.bidule.com',
+      'SMTPAuth'    => 'true',
+      'SMTPSecure'  => 'tls',
+      'port'        => '587',
+      'user'        => 'user@bidule.com',
+      'password'    => 'pass',      
     ]
   ],
 ];
