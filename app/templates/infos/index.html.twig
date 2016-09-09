@@ -2,26 +2,28 @@
 
 {% block container %}
   <div class="infos clearfix">
-    <div class="map col-xs-12 col-md-6">
-      <div class="title">Nous trouver</div>
-
-      <div class="map-container"></div>
-    </div>
     <div class="contact col-xs-12 col-md-6">
       <div class="title">Nous contacter</div>
 
-      <div class="detail">
-        <i class="fa fa-phone-square" aria-hidden="true"></i> 034 16 549 87
-        <br />
-        <a href="mailto:lakaze@gmail.com" target="_blank">
-          <i class="fa fa-envelope" aria-hidden="true"></i> lakaze@gmail.com
-        </a>
-        <br />
-        <a href="https://www.facebook.com/Lakazedepassage/" target="_blank">
-          <i class="fa fa-facebook-square" aria-hidden="true"></i> https://www.facebook.com/Lakazedepassage/
-        </a>
-      </div>
-
+      {% if infos.phone or infos.mail or infos.facebook %}
+        <div class="detail">
+          {% if infos.phone %}
+            <i class="fa fa-phone-square" aria-hidden="true"></i> {{ infos.phone }}
+            <br />
+          {% endif %}
+          {% if infos.mail %}
+            <a href="mailto:{{ infos.mail }}" target="_blank">
+              <i class="fa fa-envelope" aria-hidden="true"></i> {{ infos.mail }}
+            </a>
+            <br />
+          {% endif %}
+          {% if infos.facebook %}
+            <a href="{{ infos.facebook }}" target="_blank">
+              <i class="fa fa-facebook-square" aria-hidden="true"></i> {{ infos.facebook }}
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
       <form class="contact_form" action="{{ path_for('infos_contact') }}" method="POST" enctype="multipart/form-data">
         Formulaire de contact<br/><br/>
         <div class="row">
@@ -43,9 +45,23 @@
         <button type="submit" class="btn btn-success right"><i class="fa fa-paper-plane" aria-hidden="true"></i>Envoyer</button>
       </form>  
     </div>         
+  
+    <div class="map col-xs-12 col-md-6">
+      <div class="title">Nous trouver</div>
+
+      <div class="map-container"></div>
+    </div>
   </div>
 {% endblock %}
 
 {% block scripts %}
-  <script async defer src="https://maps.googleapis.com/maps/api/js?callback=app.initMap"></script>
+  {% if infos.lat and infos.lng %}
+    <script>
+      const COORD = {
+        'lat' : {{ infos.lat }},
+        'lng' : {{ infos.lng }}
+      }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?callback=app.initMap"></script>
+  {% endif %}
 {% endblock %}

@@ -49,11 +49,8 @@ $app->group('/admin', function () {
   });
 
   $this->group('/infos', function () {
-    $this->get('', 'App\Controller\Admin\InfoController:listAction')->setName('admin_infos_list');
-    $this->get('/create', 'App\Controller\Admin\InfoController:createAction')->setName('admin_infos_create');
-    $this->get('/edit/{id}', 'App\Controller\Admin\InfoController:editAction')->setName('admin_infos_edit');
-    $this->post('/save', 'App\Controller\Admin\InfoController:saveAction')->setName('admin_infos_save');
-    $this->get('/delete/{id}', 'App\Controller\Admin\InfoController:deleteAction')->setName('admin_infos_delete');
+    $this->get('', 'App\Controller\Admin\InfosController:editAction')->setName('admin_infos_edit');
+    $this->post('/save', 'App\Controller\Admin\InfosController:saveAction')->setName('admin_infos_save');
   });  
 });
 

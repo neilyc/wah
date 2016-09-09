@@ -93,6 +93,6 @@ $container['App\Controller\Admin\LodgingController'] = function ($c) {
   return new App\Controller\Admin\LodgingController($c->get('view'), $c->get('logger'), $c->get('router'), $c->get('flash'));
 };
 
-$container['App\Controller\Admin\InfoController'] = function ($c) {
-  return new App\Controller\Admin\InfoController($c->get('view'), $c->get('logger'), $c->get('router'), $c->get('flash'));
+$container['App\Controller\Admin\InfosController'] = function ($c) {
+  return new App\Controller\Admin\InfosController($c->get('view'), $c->get('logger'), $c->get('router'), $c->get('flash'));
 };

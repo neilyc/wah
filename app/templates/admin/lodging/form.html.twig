@@ -5,13 +5,22 @@
     <div class="lodging form">
       <form action="{{ path_for('admin_lodging_save') }}" method="post" enctype="multipart/form-data">
         <input type="hidden" value="{{ lodging.id }}" name="id">
-        <textarea type="text" name="description">{{ lodging.description }}</textarea>
-        <input type="text" value="{{ lodging.price }}" name="price">
-        {% if lodging.image %}
-          <img src="/upload/lodging/{{ lodging.image }}" />
-        {% endif %}
-        <input type="file" name="image">
-        <button>Sauvegarder</button>
+        <div class="row">
+          <label for="description">Description</label><br />
+          <textarea type="text" name="description">{{ lodging.description }}</textarea>
+        </div>
+        <div class="row">
+          <label for="price">Prix</label><br />
+          <input type="text" value="{{ lodging.price }}" name="price">
+        </div>
+        <div class="row">
+          <label for="image">Photo</label><br />
+          <input type="file" name="image">
+          {% if lodging.image %}
+            <br /><img src="/upload/lodging/{{ lodging.image }}" />
+          {% endif %}
+        </div>
+        <button class="btn btn-success">Sauvegarder</button>
       </form>
     </div>
   </div>

@@ -1,0 +1,39 @@
+{% extends "admin/base.html.twig" %}
+
+{% block container %}
+  <div class="infos">
+    <div class="info form">
+      <form action="{{ path_for('admin_infos_save') }}" method="post" enctype="multipart/form-data">
+        <input type="hidden" value="{{ infos.id }}" name="id">
+
+        <div class="row">
+          <label for="phone">Téléphone</label><br />
+          <input type="text" value="{{ infos.phone }}" name="phone">
+        </div>
+        <div class="row">
+          <label for="mail">Email</label><br />
+          <input type="text" value="{{ infos.mail }}" name="mail">
+        </div>
+        <div class="row">
+          <label for="facebook">Facebook</label><br />
+          <input type="text" value="{{ infos.facebook }}" name="facebook">
+        </div>
+
+        <div class="map">
+          <b>EMPLACEMENT</b>
+
+          <div class="row">
+            <label for="lat">Latitude</label><br />
+            <input type="text" value="{{ infos.lat }}" name="lat">
+          </div>
+          <div class="row">
+            <label for="lng">Longitude</label><br />
+            <input type="text" value="{{ infos.lng }}" name="lng">
+          </div>
+        </div>
+
+        <button class="btn btn-success">Sauvegarder</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
