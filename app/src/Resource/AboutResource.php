@@ -8,7 +8,7 @@ use App\AbstractResource;
  * Class Resource
  * @package App
  */
-class InfosResource extends AbstractResource
+class AboutResource extends AbstractResource
 {
   /**
    * @param string|null $id
@@ -18,11 +18,11 @@ class InfosResource extends AbstractResource
   public function get($id = null)
   {
     if ($id === null) {
-      return $this->entityManager->getRepository('App\Entity\Infos')->findAll();
+      return $this->entityManager->getRepository('App\Entity\About')->findAll();
     }
 
-    if($info = $this->entityManager->getRepository('App\Entity\Infos')->find($id)) {
-      return $info;
+    if($about = $this->entityManager->getRepository('App\Entity\About')->find($id)) {
+      return $about;
     }
 
     return false;

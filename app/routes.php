@@ -25,6 +25,10 @@ $app->group('/', function () {
     $this->get('', 'App\Controller\InfosController:indexAction')->setName('infos_index');
     $this->post('/contact', 'App\Controller\InfosController:contactAction')->setName('infos_contact');
   });
+
+  $this->group('about', function () {
+    $this->get('', 'App\Controller\AboutController:indexAction')->setName('about_index');
+  });
 });
 /**
  * Photo 
@@ -63,7 +67,12 @@ $app->group('/admin', function () {
   $this->group('/infos', function () {
     $this->get('', 'App\Controller\Admin\InfosController:editAction')->setName('admin_infos_edit');
     $this->post('/save', 'App\Controller\Admin\InfosController:saveAction')->setName('admin_infos_save');
-  });  
+  }); 
+
+  $this->group('/about', function () {
+    $this->get('', 'App\Controller\Admin\AboutController:editAction')->setName('admin_about_edit');
+    $this->post('/save', 'App\Controller\Admin\AboutController:saveAction')->setName('admin_about_save');
+  }); 
 });
 
 /*

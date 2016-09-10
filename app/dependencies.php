@@ -78,6 +78,11 @@ $container['App\Controller\ServiceController'] = function ($c) {
   return new App\Controller\ServiceController($c->get('view'), $c->get('logger'), $c->get('router'), $c->get('flash'));
 };
 
+
+$container['App\Controller\AboutController'] = function ($c) {
+  return new App\Controller\AboutController($c->get('view'), $c->get('logger'), $c->get('router'), $c->get('flash'));
+};
+
 /* ADMIN */
 $container['App\Controller\Admin\IndexController'] = function ($c) {
   return new App\Controller\Admin\IndexController($c->get('view'), $c->get('logger'), $c->get('router'), $c->get('flash'));
@@ -102,4 +107,8 @@ $container['App\Controller\Admin\InfosController'] = function ($c) {
 
 $container['App\Controller\Admin\ServiceController'] = function ($c) {
   return new App\Controller\Admin\ServiceController($c->get('view'), $c->get('logger'), $c->get('router'), $c->get('flash'));
+};
+
+$container['App\Controller\Admin\AboutController'] = function ($c) {
+  return new App\Controller\Admin\AboutController($c->get('view'), $c->get('logger'), $c->get('router'), $c->get('flash'));
 };
