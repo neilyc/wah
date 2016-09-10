@@ -11,8 +11,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "App\\": "app/src",
-      "PHPMailer\\": "app/src",
+      "App\\": "app/src"
     }
   },
   "require": {

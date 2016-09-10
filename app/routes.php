@@ -13,6 +13,10 @@ $app->group('/', function () {
     $this->get('', 'App\Controller\PhotoController:indexAction')->setName('photo_index');
   });
 
+  $this->group('services', function () {
+    $this->get('', 'App\Controller\ServiceController:indexAction')->setName('service_index');
+  });
+
   $this->group('hebergements', function () {
     $this->get('', 'App\Controller\LodgingController:indexAction')->setName('lodging_index');
   });
@@ -38,6 +42,14 @@ $app->group('/admin', function () {
     $this->get('/edit/{id}', 'App\Controller\Admin\PhotoController:editAction')->setName('admin_photo_edit');
     $this->post('/save', 'App\Controller\Admin\PhotoController:saveAction')->setName('admin_photo_save');
     $this->get('/delete/{id}', 'App\Controller\Admin\PhotoController:deleteAction')->setName('admin_photo_delete');
+  });
+
+  $this->group('/services', function () {
+    $this->get('', 'App\Controller\Admin\ServiceController:listAction')->setName('admin_service_list');
+    $this->get('/create', 'App\Controller\Admin\ServiceController:createAction')->setName('admin_service_create');
+    $this->get('/edit/{id}', 'App\Controller\Admin\ServiceController:editAction')->setName('admin_service_edit');
+    $this->post('/save', 'App\Controller\Admin\ServiceController:saveAction')->setName('admin_service_save');
+    $this->get('/delete/{id}', 'App\Controller\Admin\ServiceController:deleteAction')->setName('admin_service_delete');
   });
 
   $this->group('/hebergements', function () {
