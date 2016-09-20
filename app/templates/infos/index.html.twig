@@ -8,18 +8,18 @@
       {% if infos.phone or infos.mail or infos.facebook %}
         <div class="detail">
           {% if infos.phone %}
-            <i class="fa fa-phone-square" aria-hidden="true"></i> {{ infos.phone }}
+            <i class="icon-phone-square" aria-hidden="true"></i> {{ infos.phone }}
             <br />
           {% endif %}
           {% if infos.mail %}
             <a href="mailto:{{ infos.mail }}" target="_blank">
-              <i class="fa fa-envelope" aria-hidden="true"></i> {{ infos.mail }}
+              <i class="icon-envelope" aria-hidden="true"></i> {{ infos.mail }}
             </a>
             <br />
           {% endif %}
           {% if infos.facebook %}
             <a href="{{ infos.facebook }}" target="_blank">
-              <i class="fa fa-facebook-square" aria-hidden="true"></i> {{ infos.facebook }}
+              <i class="icon-facebook-square" aria-hidden="true"></i> {{ infos.facebook }}
             </a>
           {% endif %}
         </div>
@@ -42,7 +42,7 @@
           <label for="message">Message</label><br />
           <textarea class="message" class="input" name="message" placeholder="Votre message"></textarea><br />
         </div>
-        <button type="submit" class="btn btn-success right"><i class="fa fa-paper-plane" aria-hidden="true"></i>Envoyer</button>
+        <button type="submit" class="btn btn-success right"><i class="icon-paper-plane" aria-hidden="true"></i>Envoyer</button>
       </form>  
     </div>         
   

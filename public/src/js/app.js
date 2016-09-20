@@ -11,12 +11,17 @@ class App {
     });
 
     window.onload = () => {
-      self._menuCheckActive();
       document.body.classList.add("loaded");
     }
+
     window.onscroll = (e) => {  
       self._toggleTopNav();
     } 
+    self._menuCheckActive();
+
+    if(document.querySelector('.photos')) {
+      new Modal('.img');
+    }
   }
 
   _toggleTopNav() {

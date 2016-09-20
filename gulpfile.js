@@ -31,6 +31,7 @@ gulp.task('js.front', () => {
     // lib
 
     // app
+    './public/src/js/modal.js',
     './public/src/js/app.js',
   ])
   .pipe(babel())
