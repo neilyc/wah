@@ -1,9 +1,30 @@
 {% extends "admin/base.html.twig" %}
 
 {% block container %}
-  <div class="lodgings">
-    <div class="lodgings-list list">
-      <a href="{{ path_for('admin_lodging_create') }}" class="btn btn-info">Ajouter</a>
+  <div class="lodgings clearfix">
+    <div class="lodging-infos col-xs-12 col-md-6">
+      <b>INFORMATIONS</b> 
+      <form action="{{ path_for('admin_lodginginfos_save') }}" method="post" enctype="multipart/form-data">
+        <input type="hidden" value="{{ infos.id }}" name="id">
+        <div class="row">
+          <label for="description">Description</label><br />
+          <textarea type="text" name="description">{{ infos.description }}</textarea>
+        </div>
+        <div class="row">
+          <label for="equipement">Equipements disponible</label><br />
+          <textarea type="text" name="equipement">{{ infos.equipement }}</textarea>
+        </div>
+        <div class="row">
+          <label for="espace">Espaces communs</label><br />
+          <textarea type="text" name="espace">{{ infos.espace }}</textarea>
+        </div>
+
+        <button class="btn btn-success">Sauvegarder</button>
+      </form>
+    </div>
+    <div class="lodgings-list list col-xs-12 col-md-6">
+      <b>HEBERGEMENTS</b>
+      <a href="{{ path_for('admin_lodging_create') }}" class="btn btn-info right">Ajouter</a>
       {% if lodgings %}
         <table>
           <tr>
@@ -13,14 +34,15 @@
           </tr>          
           {% for lodging in lodgings %}
             <tr class="lodging">
-              <td>{{lodging.title}}</td>
+              <td>{{lodging.name}}</td>
               <td>        
                 {% if lodging.image %}
                   <img src="/upload/lodging/{{ lodging.image }}" />
                 {% endif %}
               </td>
               <td>
-                <a href="{{ path_for('admin_lodging_edit',  { 'id': lodging.id }) }}" class="btn btn-success edit">Modifier</a> <a href="{{ path_for('admin_lodging_delete',  { 'id': lodging.id }) }}" class="btn btn-danger delete">Supprimer</a>
+                <a href="{{ path_for('admin_lodging_edit',  { 'id': lodging.id }) }}" class="btn btn-success edit">Modifier</a> <br>
+                <a href="{{ path_for('admin_lodging_delete',  { 'id': lodging.id }) }}" class="btn btn-danger delete">Supprimer</a>
               </td>
             </tr>
           {% endfor %}

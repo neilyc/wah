@@ -2,20 +2,42 @@
 
 {% block container %}
   <div class="lodgings clearfix">
+    <span class="info">
+      {% if infos %}
+        {% if infos.description %}
+          {{ infos.description|raw }}
+        {% endif %}
+      {% endif %}
+    </span>
     {% if lodgings %}
         {% for lodging in lodgings %}
-          <div class="lodging">
-            <div class="img col-xs-12 col-md-4">
-              <a target="_blank" href="img_forest.jpg" title="{{lodging.title}}" >
+          <div class="lodging clearfix">
+            <div class="img col-xs-12 col-md-6">
+              <a target="_blank" href="/upload/lodging/{{lodging.image}}" title="{{lodging.title}}" >
                 <img src="/upload/lodging/{{lodging.image}}" alt="Forest">
               </a>
             </div>
-            <div class="desc col-xs-12 col-md-8">
-              <p>{{lodging.description | raw }}</p>
-              <p>Prix : {{lodging.price}}</p>
+            <div class="infos col-xs-12 col-md-6">
+              <span class="name">{{lodging.name | raw }}</span>
+              <span class="desc">{{lodging.description | raw }}</span>
+              <span class="price">Prix : <strong>{{lodging.price}}</strong></span>
             </div>
           </div>
         {% endfor %}
+    {% endif %}
+    {% if infos %}
+      {% if infos.equipement %}
+        <div class="col-xs-12 col-md-6">
+          <b>Equipements disponibles</b>
+          {{ infos.equipement|raw }}
+        </div>
+      {% endif %}
+      {% if infos.espace %}
+        <div class="col-xs-12 col-md-6">
+          <b>Espaces communs</b>
+          {{ infos.espace|raw }}
+        </div>
+      {% endif %}
     {% endif %}
   </div>
 {% endblock %}

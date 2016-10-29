@@ -19,6 +19,11 @@ class Lodging
   protected $id;
 
   /**
+   * @ORM\Column(type="string", length=150)
+   */
+  protected $name;
+
+  /**
    * @ORM\Column(type="text")
    */
   protected $description;
@@ -43,6 +48,16 @@ class Lodging
   public function getId()
   {
       return $this->id;
+  }
+
+  /**
+   * Get photo name
+   *
+   * @ORM\return string
+   */
+  public function getName()
+  {
+      return $this->name;
   }
 
   /**
@@ -73,6 +88,16 @@ class Lodging
   public function getImage()
   {
       return $this->image;
+  }
+
+  /**
+   * set photo name
+   *
+   * @ORM\param $name
+   */
+  public function setName($name)
+  {
+    $this->name = $name;
   }
 
   /**

@@ -43,6 +43,7 @@ class InfosController extends AdminController
     $info->setPhone($_REQUEST['phone']);
     $info->setFacebook($_REQUEST['facebook']);
     $info->setMail($_REQUEST['mail']);
+    $info->setFindUs($_REQUEST['find_us']);
     $info->setLat($_REQUEST['lat']);
     $info->setLng($_REQUEST['lng']);
 

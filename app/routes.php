@@ -64,6 +64,10 @@ $app->group('/admin', function () {
     $this->get('/delete/{id}', 'App\Controller\Admin\LodgingController:deleteAction')->setName('admin_lodging_delete');
   });
 
+  $this->group('/lodginginfos', function () {
+    $this->post('/save', 'App\Controller\Admin\LodgingInfosController:saveAction')->setName('admin_lodginginfos_save');
+  }); 
+
   $this->group('/infos', function () {
     $this->get('', 'App\Controller\Admin\InfosController:editAction')->setName('admin_infos_edit');
     $this->post('/save', 'App\Controller\Admin\InfosController:saveAction')->setName('admin_infos_save');

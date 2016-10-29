@@ -3,6 +3,13 @@
 {% block container %}
   <div class="infos clearfix">
     <div class="contact col-xs-12 col-md-6">
+      <div class="title">Nous trouver</div>
+
+      {% if infos.findUs %}
+        <div class="detail">
+          {{ infos.findUs|raw }}
+        </div>
+      {% endif %}
       <div class="title">Nous contacter</div>
 
       {% if infos.phone or infos.mail or infos.facebook %}
@@ -24,30 +31,11 @@
           {% endif %}
         </div>
       {% endif %}
-      <form class="contact_form" action="{{ path_for('infos_contact') }}" method="POST" enctype="multipart/form-data">
-        Formulaire de contact<br/><br/>
-        <div class="row">
-          <label for="nom">Nom</label><br />
-          <input class="nom" class="input" nom="nom" type="text" placeholder="Votre nom" /><br />
-        </div>
-        <div class="row">
-          <label for="prenom">Prénom</label><br />
-          <input class="prenom" class="input" prenom="prenom" type="text" placeholder="Votre prenom" /><br />
-        </div>
-        <div class="row">
-          <label for="email">Email</label><br />
-          <input class="email" class="input" name="email" type="text" placeholder="Votre email" /><br />
-        </div>
-        <div class="row">
-          <label for="message">Message</label><br />
-          <textarea class="message" class="input" name="message" placeholder="Votre message"></textarea><br />
-        </div>
-        <button type="submit" class="btn btn-success right"><i class="icon-paper-plane" aria-hidden="true"></i>Envoyer</button>
       </form>  
     </div>         
   
     <div class="map col-xs-12 col-md-6">
-      <div class="title">Nous trouver</div>
+      <div class="title">Emplacement</div>
 
       <div class="map-container"></div>
     </div>

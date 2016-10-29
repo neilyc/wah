@@ -3,12 +3,22 @@ namespace App\Controller\Admin;
 
 use App\Controller\Admin\AdminController;
 use App\Resource\LodgingResource;
+use App\Resource\LodgingInfosResource;
+use App\Entity\LodgingInfos;
 use App\Entity\Lodging;
 
 class LodgingController extends AdminController
 {
   protected $lodgingResource = null;
+  protected $lodgingInfosResource = null;
 
+  public function getLodgingInfosResource() {
+    if($this->lodgingInfosResource == null) {
+      $this->lodgingInfosResource = new LodgingInfosResource();
+    }
+
+    return $this->lodgingInfosResource;
+  }
   public function getLodgingResource() {
     if($this->lodgingResource == null) {
       $this->lodgingResource = new LodgingResource();
@@ -23,6 +33,7 @@ class LodgingController extends AdminController
 
     $this->context += array(
       'lodgings'  => $this->getLodgingResource()->get(),
+      'infos'  => $this->getLodgingInfosResource()->get(1)
     );
 
     $this->view->render($response, 'admin/lodging/list.html.twig', $this->context);
@@ -68,6 +79,7 @@ class LodgingController extends AdminController
       $lodging = new Lodging();
     }
 
+    $lodging->setName($_REQUEST['name']);
     $lodging->setDescription($_REQUEST['description']);
     $lodging->setPrice($_REQUEST['price']);
 

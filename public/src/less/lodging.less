@@ -1,0 +1,37 @@
+.lodgings {
+  .info {
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+  .lodging {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #888;
+    position: relative;
+
+    .img {
+      text-align: center;
+      img {
+        width: 70%;
+      }
+    }
+    .infos {
+      .name {
+        font-size: 20px;
+        font-weight: bold;
+        color: @green;
+      }
+      .desc {
+        margin-bottom: 25px;
+        display: block;
+      }
+      .price {
+        position: absolute;
+        bottom: 15px;
+      }
+    }
+    &:last-child {
+      border: 0;
+    }
+  }
+}

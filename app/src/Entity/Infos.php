@@ -28,6 +28,11 @@ class Infos
   protected $mail;
 
   /**
+   * @ORM\Column(type="text")
+   */
+  protected $find_us;
+
+  /**
    * @ORM\Column(type="string", length=64)
    */
   protected $facebook;
@@ -102,6 +107,16 @@ class Infos
   }
 
   /**
+   * Get info find_us
+   *
+   * @ORM\return string
+   */
+  public function getFindUs()
+  {
+      return $this->find_us;
+  }
+
+  /**
    * set info phone
    *
    * @ORM\param $phone
@@ -119,6 +134,16 @@ class Infos
   public function setMail($mail)
   {
     $this->mail = $mail;
+  }
+
+  /**
+   * set info find_us
+   *
+   * @ORM\param $find_us
+   */
+  public function setFindUs($find_us)
+  {
+    $this->find_us = $find_us;
   }
 
   /**

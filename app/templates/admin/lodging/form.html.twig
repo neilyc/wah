@@ -6,6 +6,10 @@
       <form action="{{ path_for('admin_lodging_save') }}" method="post" enctype="multipart/form-data">
         <input type="hidden" value="{{ lodging.id }}" name="id">
         <div class="row">
+          <label for="name">Nom</label><br />
+          <input type="text" value="{{ lodging.name }}" name="name">
+        </div>
+        <div class="row">
           <label for="description">Description</label><br />
           <textarea type="text" name="description">{{ lodging.description }}</textarea>
         </div>

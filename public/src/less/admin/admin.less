@@ -9,7 +9,14 @@ html {
     background-color: #f9f9f9;
 
     .error { color: #f00; }
-
+    .clearfix:after {
+      visibility: hidden;
+      display: block;
+      font-size: 0;
+      content: " ";
+      clear: both;
+      height: 0;
+    }
     .container {
       transition: margin-left .5s;
       padding: 70px 20px;
