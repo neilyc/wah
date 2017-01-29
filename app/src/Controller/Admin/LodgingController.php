@@ -72,7 +72,8 @@ class LodgingController extends AdminController
   public function saveAction($request, $response)
   {
     $this->logger->info('Admin lodging save action [start]');
-
+    
+    set_time_limit(0);
     if(isset($_REQUEST['id']) && $_REQUEST['id'] != '') {
       $lodging = $this->getLodgingResource()->get($_REQUEST['id']);
     } else {

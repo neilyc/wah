@@ -61,6 +61,8 @@ class PhotoController extends AdminController
   public function saveAction($request, $response)
   {
     $this->logger->info('Admin photo save action [start]');
+    
+    set_time_limit(0);
 
     if(isset($_REQUEST['id']) && $_REQUEST['id'] != '') {
       $photo = $this->getPhotoResource()->get($_REQUEST['id']);
