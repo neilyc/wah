@@ -18,10 +18,8 @@ class ServiceController extends Controller
 
   public function indexAction($request, $response)
   {
-    $this->logger->info("Home page action dispatched");
-    
     $context = array(
-      'services' => $this->getServiceResource()->get(),
+      'service' => $this->getServiceResource()->get(1),
     );
 
     $this->view->render($response, 'service/index.html.twig', $context);

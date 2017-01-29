@@ -19,14 +19,14 @@ class Service
   protected $id;
 
   /**
-   * @ORM\Column(type="string", length=64)
+   * @ORM\Column(type="text")
    */
-  protected $title;
+  protected $restauration;
 
   /**
-   * @ORM\Column(type="string", length=150)
+   * @ORM\Column(type="text")
    */
-  protected $image;
+  protected $autre;
 
   /**
    * Get service id
@@ -39,56 +39,42 @@ class Service
   }
 
   /**
-   * Get service title
+   * Get service restauration
    *
    * @ORM\return string
    */
-  public function getTitle()
+  public function getRestauration()
   {
-      return $this->title;
+      return $this->restauration;
   }
 
   /**
-   * Get service image
+   * Get service autre
    *
    * @ORM\return string
    */
-  public function getImage()
+  public function getAutre()
   {
-      return $this->image;
+      return $this->autre;
   }
 
   /**
-   * set service title
+   * set service restauration
    *
-   * @ORM\param $title
+   * @ORM\param $restauration
    */
-  public function setTitle($title)
+  public function setRestauration($restauration)
   {
-    $this->title = $title;
+    $this->restauration = $restauration;
   }
 
   /**
-   * set service image
+   * set service autre
    *
-   * @ORM\param $image
+   * @ORM\param $autre
    */
-  public function setImage($image)
+  public function setAutre($autre)
   {
-    $this->image = $image;
-  }
-
-
-  public function uploadImage($img) {
-    $handle = new Upload($img);
-    if ($handle->uploaded) {
-      $handle->process('upload/service/');
-      if ($handle->processed) {
-        $this->setImage($handle->file_dst_name);
-        $handle->clean();
-      } else {
-
-      }
-    }
+    $this->autre = $autre;
   }
 }

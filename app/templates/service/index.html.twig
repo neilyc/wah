@@ -1,17 +1,16 @@
 {% extends "base.html.twig" %}
 
 {% block container %}
-  <div class="photos clearfix">
-    {% if photos %}
-      <ul class="polaroids clearfix">
-        {% for photo in photos %}
-          <li class="img col-xs-12 col-sm-6 col-md-3">
-            <a target="_blank" href="img_forest.jpg" title="{{photo.title}}">
-              <img src="/upload/photo/{{photo.image}}" alt="Forest">
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
+  <div class="infos clearfix">
+    {% if service %}
+      <div class="contact col-xs-12 col-md-6">
+        <div class="title">Restauration</div>
+        {{ service.restauration|raw }}
+      </div>         
+      <div class="map col-xs-12 col-md-6">
+        <div class="title">Autre</div>
+        {{ service.autre|raw }}
+      </div>
     {% endif %}
   </div>
 {% endblock %}

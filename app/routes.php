@@ -49,11 +49,8 @@ $app->group('/admin', function () {
   });
 
   $this->group('/services', function () {
-    $this->get('', 'App\Controller\Admin\ServiceController:listAction')->setName('admin_service_list');
-    $this->get('/create', 'App\Controller\Admin\ServiceController:createAction')->setName('admin_service_create');
-    $this->get('/edit/{id}', 'App\Controller\Admin\ServiceController:editAction')->setName('admin_service_edit');
+    $this->get('', 'App\Controller\Admin\ServiceController:editAction')->setName('admin_service_edit');
     $this->post('/save', 'App\Controller\Admin\ServiceController:saveAction')->setName('admin_service_save');
-    $this->get('/delete/{id}', 'App\Controller\Admin\ServiceController:deleteAction')->setName('admin_service_delete');
   });
 
   $this->group('/hebergements', function () {

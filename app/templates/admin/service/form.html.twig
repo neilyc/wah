@@ -1,20 +1,17 @@
 {% extends "admin/base.html.twig" %}
 
 {% block container %}
-  <div class="photos">
-    <div class="photo form">
-      <form action="{{ path_for('admin_photo_save') }}" method="post" enctype="multipart/form-data">
-        <input type="hidden" value="{{ photo.id }}" name="id">
+  <div class="services">
+    <div class="service form">
+      <form action="{{ path_for('admin_service_save') }}" method="post" enctype="multipart/form-data">
+        <input type="hidden" value="{{ service.id }}" name="id">
         <div class="row">
-          <label for="title">Nom</label><br/>
-          <input type="text" value="{{ photo.title }}" name="title" placeholder="Nom">
+          <label for="lat">Restauration</label><br />
+          <textarea type="text" name="restauration">{{ service.restauration }}</textarea>
         </div>
         <div class="row">
-          <label for="image">Photo</label><br />
-          <input type="file" name="image">
-          {% if photo.image %}
-            <br/><img src="/upload/photo/{{ photo.image }}" />
-          {% endif %}
+          <label for="lat">Autre</label><br />
+          <textarea type="text" name="autre">{{ service.autre }}</textarea>
         </div>
         <button class="btn btn-success">Sauvegarder</button>
       </form>
